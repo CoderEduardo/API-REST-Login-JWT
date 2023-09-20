@@ -1,0 +1,22 @@
+{
+  "name": "api-rest-login-jwt",
+  "version": "1.0.0",
+  "description": "Criando uma api rest de login no node com jwt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoderEduardo/API-REST-Login-JWT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoderEduardo/API-REST-Login-JWT/issues"
+  },
+  "homepage": "https://github.com/CoderEduardo/API-REST-Login-JWT#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
