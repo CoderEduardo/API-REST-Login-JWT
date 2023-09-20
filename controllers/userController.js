@@ -1,5 +1,8 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+
+const secret = "banana"
 
 const userController = {
     registrar: async (req,res)=>{
@@ -31,9 +34,13 @@ const userController = {
 
         if(!verificarSenha) return res.status(400).send("Email ou senha incorretos")
 
+        const token = jwt.sign({id:usuario.id},secret)
+        res.header('auth-token',token)
+
         res.send("Usuário logado")
     }
 }
+
 
 
 
