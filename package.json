@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/CoderEduardo/API-REST-Login-JWT#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2"
   }
 }
