@@ -21,9 +21,17 @@ const userController = {
         }
 
     },
-    login:(req,res)=>{
-        console.log("Login")
-        res.send("Login")
+    login: async (req,res)=>{
+        //Verificando se o email existe
+        let usuario = await User.findOne({email:req.body.email})
+        if(!usuario) return res.status(400).send("Email ou senha incorretos")
+
+        //Verifica se a senha está correta
+        const verificarSenha = bcrypt.compareSync(req.body.password,usuario.password)
+
+        if(!verificarSenha) return res.status(400).send("Email ou senha incorretos")
+
+        res.send("Usuário logado")
     }
 }
 
