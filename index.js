@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const PORTA = 8080
 const userRouter = require("./routes/userRouter")
+const adminRouter = require("./routes/adminRouter")
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -15,6 +16,7 @@ mongoose.connect(URL).then(()=>{
 })
 
 app.use("/",userRouter)
+app.use("/",adminRouter)
 
 app.listen(PORTA,()=>{
     console.log(`Servidor rodando na porta: ${PORTA}`)

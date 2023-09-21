@@ -34,7 +34,7 @@ const userController = {
 
         if(!verificarSenha) return res.status(400).send("Email ou senha incorretos")
 
-        const token = jwt.sign({id:usuario.id},secret)
+        const token = jwt.sign({id:usuario.id,admin:usuario.admin},secret)
         res.header('auth-token',token)
 
         res.send("Usuário logado")
