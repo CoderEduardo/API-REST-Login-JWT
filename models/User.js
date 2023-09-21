@@ -4,14 +4,20 @@ const userSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
+        minLength:3,
+        maxLength:100
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        minLength:3,
+        maxLength:100
     },
     password:{
         type:String,
-        required:true
+        required:true,
+        minLength:6,
+        maxLength:100
     },
     admin:{
         type:Boolean,

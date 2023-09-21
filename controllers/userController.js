@@ -1,11 +1,15 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const {loginUsuario,registroUsuario} = require("./validate")
 
 const secret = "banana"
 
 const userController = {
     registrar: async (req,res)=>{
+
+        const {error} = registroUsuario({name:req.body.name,email:req.body.email,password:req.body.password})
+        if(error) {return res.status(400).send(error)}
 
         let verificarEmail = await User.findOne({email:req.body.email})
         if(verificarEmail) return res.status(400).send("Esse email já está cadastrado")
@@ -25,6 +29,10 @@ const userController = {
 
     },
     login: async (req,res)=>{
+
+        const {error} = loginUsuario({email:req.body.email,password:req.body.password})
+        if(error) {return res.status(400).send(error)}
+
         //Verificando se o email existe
         let usuario = await User.findOne({email:req.body.email})
         if(!usuario) return res.status(400).send("Email ou senha incorretos")
